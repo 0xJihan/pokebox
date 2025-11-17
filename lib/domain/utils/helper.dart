@@ -32,7 +32,7 @@ Gradient generateSingleColorGradient() {
       .withLightness(0.80)     // soft shade
       .toColor();
 
-  return LinearGradient(
+  return  LinearGradient(
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
     colors: [dark, light],

@@ -157,3 +157,166 @@ class AppTheme{
     textTheme: AppTypography.blackQuattrocento,
   );
 }
+
+
+
+/// ------------------------------------------------------------
+/// TEXT THEME EXTENSIONS
+/// ------------------------------------------------------------
+extension TextThemeExtension on BuildContext {
+  TextTheme get textTheme => Theme.of(this).textTheme;
+
+  // Quick access to common text styles
+  TextStyle? get displayLarge => textTheme.displayLarge;
+  TextStyle? get displayMedium => textTheme.displayMedium;
+  TextStyle? get displaySmall => textTheme.displaySmall;
+
+  TextStyle? get headlineLarge => textTheme.headlineLarge;
+  TextStyle? get headlineMedium => textTheme.headlineMedium;
+  TextStyle? get headlineSmall => textTheme.headlineSmall;
+
+  TextStyle? get titleLarge => textTheme.titleLarge;
+  TextStyle? get titleMedium => textTheme.titleMedium;
+  TextStyle? get titleSmall => textTheme.titleSmall;
+
+  TextStyle? get bodyLarge => textTheme.bodyLarge;
+  TextStyle? get bodyMedium => textTheme.bodyMedium;
+  TextStyle? get bodySmall => textTheme.bodySmall;
+
+  TextStyle? get labelLarge => textTheme.labelLarge;
+  TextStyle? get labelMedium => textTheme.labelMedium;
+  TextStyle? get labelSmall => textTheme.labelSmall;
+}
+
+/// ------------------------------------------------------------
+/// THEME + COLOR SCHEME EXTENSIONS
+/// ------------------------------------------------------------
+extension AppThemeExtension on BuildContext {
+  ThemeData get theme => Theme.of(this);
+  ColorScheme get colorScheme => theme.colorScheme;
+
+  bool get isDarkMode => theme.brightness == Brightness.dark;
+  bool get isLightMode => theme.brightness == Brightness.light;
+
+  // Basic Theme Colors (no external dependencies)
+  Color get primaryColor => colorScheme.primary;
+  Color get secondaryColor => colorScheme.secondary;
+  Color get backgroundColor => colorScheme.background;
+  Color get surfaceColor => colorScheme.surface;
+  Color get errorColor => colorScheme.error;
+
+  Color get textPrimary => colorScheme.onBackground;
+  Color get textSecondary => colorScheme.onSurfaceVariant;
+  Color get borderColor => colorScheme.outline;
+  Color get dividerColor => colorScheme.outlineVariant;
+}
+
+/// ------------------------------------------------------------
+/// ICON THEME EXTENSIONS
+/// ------------------------------------------------------------
+extension IconThemeExtension on BuildContext {
+  IconThemeData get iconTheme => Theme.of(this).iconTheme;
+
+  Color? get iconColor => iconTheme.color;
+  double? get iconSize => iconTheme.size;
+}
+
+extension TextStyleSafeCopy on TextStyle? {
+  TextStyle safeCopy({
+    Color? color,
+    FontWeight? fontWeight,
+    double? fontSize,
+    FontStyle? fontStyle,
+    double? letterSpacing,
+    double? wordSpacing,
+    TextDecoration? decoration,
+    Paint? foreground,
+    Paint? background,
+    List<Shadow>? shadows,
+    List<FontFeature>? fontFeatures,
+    TextOverflow? overflow,
+  }) {
+    return (this ?? const TextStyle()).copyWith(
+      color: color,
+      fontWeight: fontWeight,
+      fontSize: fontSize,
+      fontStyle: fontStyle,
+      letterSpacing: letterSpacing,
+      wordSpacing: wordSpacing,
+      decoration: decoration,
+      foreground: foreground,
+      background: background,
+      shadows: shadows,
+      fontFeatures: fontFeatures,
+      overflow: overflow,
+    );
+  }
+}
+
+/// ------------------------------------------------------------
+/// MEDIA QUERY + RESPONSIVE EXTENSIONS
+/// ------------------------------------------------------------
+extension SizeExtension on BuildContext {
+  MediaQueryData get mediaQuery => MediaQuery.of(this);
+
+  Size get screenSize => mediaQuery.size;
+  double get width => screenSize.width;
+  double get height => screenSize.height;
+
+  // Screen breakpoints
+  bool get isMobile => width < 768;
+  bool get isTablet => width >= 768 && width < 1024;
+  bool get isDesktop => width >= 1024;
+
+  // Responsive padding
+  double get horizontalPadding => isMobile ? 16.0 : 24.0;
+  double get verticalPadding => isMobile ? 16.0 : 24.0;
+
+  // Safe area
+  EdgeInsets get padding => mediaQuery.padding;
+  EdgeInsets get viewInsets => mediaQuery.viewInsets;
+
+  double get topPadding => padding.top;
+  double get bottomPadding => padding.bottom;
+}
+
+/// ------------------------------------------------------------
+/// SPACING EXTENSIONS
+/// ------------------------------------------------------------
+extension SpacingExtension on BuildContext {
+  double get spacing4 => 4.0;
+  double get spacing8 => 8.0;
+  double get spacing12 => 12.0;
+  double get spacing16 => 16.0;
+  double get spacing20 => 20.0;
+  double get spacing24 => 24.0;
+  double get spacing32 => 32.0;
+  double get spacing48 => 48.0;
+
+  // Responsive spacing
+  double get cardPadding => isMobile ? 16.0 : 24.0;
+  double get sectionSpacing => isMobile ? 24.0 : 32.0;
+  double get elementSpacing => isMobile ? 12.0 : 16.0;
+}
+
+/// ------------------------------------------------------------
+/// UI COMPONENT SHORTCUTS
+/// ------------------------------------------------------------
+extension UIExtension on BuildContext {
+  ThemeData get theme => Theme.of(this);
+
+  AppBarThemeData get appBarTheme => theme.appBarTheme;
+  CardThemeData get cardTheme => theme.cardTheme;
+
+  ElevatedButtonThemeData get elevatedButtonTheme => theme.elevatedButtonTheme;
+  TextButtonThemeData get textButtonTheme => theme.textButtonTheme;
+  OutlinedButtonThemeData get outlinedButtonTheme => theme.outlinedButtonTheme;
+
+  InputDecorationThemeData get inputDecorationTheme => theme.inputDecorationTheme;
+
+  // Common border radius
+  BorderRadius get borderRadiusSmall => BorderRadius.circular(8.0);
+  BorderRadius get borderRadiusMedium => BorderRadius.circular(12.0);
+  BorderRadius get borderRadiusLarge => BorderRadius.circular(16.0);
+  BorderRadius get borderRadiusXLarge => BorderRadius.circular(24.0);
+}
