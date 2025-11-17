@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:pokebox/domain/utils/helper.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -45,7 +46,6 @@ class PokeCard extends StatelessWidget {
             Text("Pikachu", style: TextStyle(fontSize: 18, fontWeight: .bold)),
             SizedBox(height: 10),
             Text("#25", style: TextStyle(fontSize: 12, fontWeight: .bold,
-            color: Colors.black.withAlpha(150)
             )),
           ],
         ),

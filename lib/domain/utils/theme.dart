@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppColors {
   // Light Theme Colors
@@ -72,6 +73,51 @@ class ColorFamily {
 }
 
 
+class AppTypography {
+  // White text theme (for dark background)
+  static final TextTheme whiteQuattrocento = GoogleFonts.quattrocentoSansTextTheme(
+    const TextTheme(
+      displayLarge: TextStyle(color: Colors.white70, decoration: TextDecoration.none),
+      displayMedium: TextStyle(color: Colors.white70, decoration: TextDecoration.none),
+      displaySmall: TextStyle(color: Colors.white70, decoration: TextDecoration.none),
+      headlineLarge: TextStyle(color: Colors.white70, decoration: TextDecoration.none),
+      headlineMedium: TextStyle(color: Colors.white70, decoration: TextDecoration.none),
+      headlineSmall: TextStyle(color: Colors.white, decoration: TextDecoration.none),
+      titleLarge: TextStyle(color: Colors.white, decoration: TextDecoration.none),
+      titleMedium: TextStyle(color: Colors.white, decoration: TextDecoration.none),
+      titleSmall: TextStyle(color: Colors.white, decoration: TextDecoration.none),
+      bodyLarge: TextStyle(color: Colors.white, decoration: TextDecoration.none),
+      bodyMedium: TextStyle(color: Colors.white, decoration: TextDecoration.none),
+      bodySmall: TextStyle(color: Colors.white70, decoration: TextDecoration.none),
+      labelLarge: TextStyle(color: Colors.white, decoration: TextDecoration.none),
+      labelMedium: TextStyle(color: Colors.white, decoration: TextDecoration.none),
+      labelSmall: TextStyle(color: Colors.white, decoration: TextDecoration.none),
+    ),
+  );
+
+  // Black text theme (for light background)
+  static final TextTheme blackQuattrocento = GoogleFonts.quattrocentoSansTextTheme(
+    const TextTheme(
+      displayLarge: TextStyle(color: Colors.black54, decoration: TextDecoration.none),
+      displayMedium: TextStyle(color: Colors.black54, decoration: TextDecoration.none),
+      displaySmall: TextStyle(color: Colors.black54, decoration: TextDecoration.none),
+      headlineLarge: TextStyle(color: Colors.black54, decoration: TextDecoration.none),
+      headlineMedium: TextStyle(color: Colors.black54, decoration: TextDecoration.none),
+      headlineSmall: TextStyle(color: Colors.black87, decoration: TextDecoration.none),
+      titleLarge: TextStyle(color: Colors.black87, decoration: TextDecoration.none),
+      titleMedium: TextStyle(color: Colors.black87, decoration: TextDecoration.none),
+      titleSmall: TextStyle(color: Colors.black, decoration: TextDecoration.none),
+      bodyLarge: TextStyle(color: Colors.black87, decoration: TextDecoration.none),
+      bodyMedium: TextStyle(color: Colors.black87, decoration: TextDecoration.none),
+      bodySmall: TextStyle(color: Colors.black54, decoration: TextDecoration.none),
+      labelLarge: TextStyle(color: Colors.black87, decoration: TextDecoration.none),
+      labelMedium: TextStyle(color: Colors.black, decoration: TextDecoration.none),
+      labelSmall: TextStyle(color: Colors.black, decoration: TextDecoration.none),
+    ),
+  );
+}
+
+
 
 class AppTheme{
 
@@ -89,8 +135,9 @@ class AppTheme{
       error: AppColors.lightError,
       onError: AppColors.lightOnError,
     ),
-    textTheme: Typography.blackMountainView,
+    textTheme: AppTypography.whiteQuattrocento ,
   );
+
 
   // Dark Theme
   static final ThemeData darkTheme = ThemeData(
@@ -107,6 +154,6 @@ class AppTheme{
       error: AppColors.darkError,
       onError: AppColors.darkOnError,
     ),
-    textTheme: Typography.whiteMountainView,
+    textTheme: AppTypography.blackQuattrocento,
   );
 }
